@@ -1,72 +1,54 @@
-# Biblioteca CORE
+# CORE Biblioteca — Sistema de Autenticación
 
-Documentación oficial del ecosistema CORE — Blueprint Estratégico, Técnico y Operativo 2026–2035.
+## Archivos generados
 
-**Versión:** 1.0  
-**Fecha:** Mayo 2026  
-**Confidencial — Uso interno**
+```
+/lib/supabaseClient.ts          → Cliente Supabase configurado
+/types/supabase.ts              → Tipos de base de datos
+/app/login/page.tsx             → Pantalla de login (fullscreen)
+/app/aviso/page.tsx             → Pantalla de advertencia (ES/EN/PT)
+/middleware.ts                  → Protección de rutas
+/components/ui/Input.tsx        → Componente Input reutilizable
+/components/ui/Button.tsx       → Componente Button reutilizable
+```
 
----
+## Setup
 
-## Stack
+### 1. Variables de entorno
 
-- **Next.js 14** (App Router)
-- **TypeScript**
-- **Tailwind CSS**
+Crear `.env.local` en la raíz del proyecto:
 
----
+```env
+NEXT_PUBLIC_SUPABASE_URL=https://axlbccznfgzgqurxxzzi.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=<tu_anon_key_de_supabase>
+```
 
-## Instalación
+La `anon key` se obtiene en: Supabase Dashboard → Settings → API → `anon public`
+
+### 2. Dependencias necesarias
 
 ```bash
-# Instalar dependencias
-npm install
-
-# Desarrollo
-npm run dev
-
-# Build producción
-npm run build
-
-# Iniciar producción
-npm start
+npm install @supabase/supabase-js @supabase/auth-helpers-nextjs
 ```
 
-Abrir en [http://localhost:3000](http://localhost:3000)
-
----
-
-## Estructura
+### 3. Flujo de autenticación
 
 ```
-/app
-  /layout.tsx          → Layout raíz con sidebar
-  /page.tsx            → Página de bienvenida
-  /globals.css         → Estilos globales
-  /components
-    /Sidebar.tsx        → Navegación lateral fija
-    /PageHeader.tsx     → Encabezado reutilizable de página
-    /DocCard.tsx        → Tarjeta de documento reutilizable
-  /docs
-    /prompts/page.tsx   → Prompts oficiales
-    /architecture/page.tsx → Arquitectura técnica
-    /strategy/page.tsx  → Estrategia y expansión
-    /roadmap/page.tsx   → Roadmap 2026–2035
-    /products/page.tsx  → Productos y verticales
+/login  →  (credenciales correctas)  →  /aviso  →  (acepta)  →  /
+                                                  →  (cancela) →  /login
+```
+
+Cualquier ruta protegida sin sesión activa → redirige automáticamente a `/login`.
+
+### 4. Push al repo
+
+```bash
+cd C:\CORE\Biblioteca
+git add .
+git commit -m "feat: sistema de login + aviso + protección de rutas"
+git push origin main
 ```
 
 ---
 
-## Secciones
-
-| Sección | Contenido |
-|---------|-----------|
-| **Prompts** | Prompts oficiales de producción (PM, ENG, Design) |
-| **Arquitectura** | Technical Architecture, DB Model, IA, integraciones |
-| **Estrategia** | Visión 2035, Expansion Blueprint, Monetización |
-| **Roadmap** | Fases: Consolidación → Expansión → Liderazgo |
-| **Productos** | Logistics, Rep, Market, Intelligence, Finance |
-
----
-
-*CORE — Global Supply. Regional Growth.*
+**CORE · Biblioteca Interna · Confidencial · 2026**

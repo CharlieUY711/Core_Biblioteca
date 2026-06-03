@@ -4,12 +4,15 @@ import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabaseClient'
 import Input from '@/components/ui/Input'
 import Button from '@/components/ui/Button'
+
 export default function LoginPage() {
   const router = useRouter()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [showPassword, setShowPassword] = useState(false)
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
+
   async function handleLogin(e: React.FormEvent) {
     e.preventDefault()
     setError('')
@@ -26,6 +29,7 @@ export default function LoginPage() {
     }
     router.push('/aviso')
   }
+
   return (
     <main
       className="min-h-screen flex items-center justify-center"
@@ -52,6 +56,7 @@ export default function LoginPage() {
             Biblioteca Interna
           </p>
         </div>
+
         <form onSubmit={handleLogin} className="flex flex-col gap-5">
           <Input
             label="Email"
@@ -62,26 +67,56 @@ export default function LoginPage() {
             required
             autoComplete="email"
           />
-          <Input
-            label="Contraseña"
-            type="password"
-            placeholder="••••••••"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-            autoComplete="current-password"
-          />
+
+          {/* Password field with toggle */}
+          <div className="flex flex-col gap-1 w-full">
+            <label className="text-xs font-medium tracking-widest uppercase text-[#7A8FA6]">
+              Contraseña
+            </label>
+            <div className="relative">
+              <input
+                type={showPassword ? 'text' : 'password'}
+                placeholder="••••••••"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                autoComplete="current-password"
+                className="w-full bg-white border border-[#CBD8E8] rounded-sm px-4 py-3 pr-11 text-[#0D2B55] text-sm placeholder-[#A0B0C4] outline-none transition-all duration-200 focus:border-[#1A4F9C] focus:ring-1 focus:ring-[#1A4F9C]/20"
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword((v) => !v)}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-[#A0B0C4] hover:text-[#1A4F9C] transition-colors duration-200 focus:outline-none"
+                tabIndex={-1}
+                aria-label={showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'}
+              >
+                {showPassword ? (
+                  <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 3l18 18M10.477 10.477A3 3 0 0013.5 13.5M6.228 6.228A10.45 10.45 0 003 12c1.657 3.766 5.327 6 9 6a10.45 10.45 0 004.772-1.228M9.75 9.75A3 3 0 0112 9c1.657 0 3 1.343 3 3a3 3 0 01-.75 2.25M21 12c-.879 2-2.617 3.773-4.772 4.772" />
+                  </svg>
+                ) : (
+                  <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.477 0 8.268 2.943 9.542 7-1.274 4.057-5.065 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                )}
+              </button>
+            </div>
+          </div>
+
           {error && (
             <p className="text-xs text-red-400 text-center tracking-wide">
               {error}
             </p>
           )}
+
           <div className="mt-2">
             <Button type="submit" loading={loading}>
               Ingresar
             </Button>
           </div>
         </form>
+
         <p className="mt-10 text-center text-[10px] tracking-widest uppercase text-[#2E4060]">
           Acceso restringido · Solo personal autorizado
         </p>

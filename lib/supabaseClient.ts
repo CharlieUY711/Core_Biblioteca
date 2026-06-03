@@ -7,5 +7,4 @@ export function createClient() {
   )
 }
 
-// Export directo para compatibilidad con login/page.tsx
 export const supabase = createClient()

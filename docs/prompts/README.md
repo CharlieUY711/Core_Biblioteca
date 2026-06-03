@@ -1,9 +1,12 @@
 # Prompts Oficiales
 
-Esta carpeta contiene los prompts oficiales utilizados para generar código, documentación o procesos dentro del ecosistema CORE.
-
-Cada prompt sigue la nomenclatura: `CORE-[ÁREA]-[NOMBRE]-V[N].md`
+Prompts oficiales del ecosistema CORE. Cada archivo sigue la nomenclatura `CORE-PM-[ÁREA]-[NÚMERO].md`.
 
 ## Lista de prompts
 
-- (vacío)
+- [CORE-PM-MASTER-0001](./CORE-PM-MASTER-0001.md) — Protocolo Maestro de Trabajo
+- [CORE-PM-BIBLIO-LOGIN-0001](./CORE-PM-BIBLIO-LOGIN-0001.md) — Login + Aviso + Protección
+- [CORE-PM-BIBLIO-CHECKLIST-0001](./CORE-PM-BIBLIO-CHECKLIST-0001.md) — Checklist Maestro
+- [CORE-PM-BIBLIO-STRUCTURE-0001](./CORE-PM-BIBLIO-STRUCTURE-0001.md) — Estructura de Documentación
+- [CORE-PM-BIBLIO-0001](./CORE-PM-BIBLIO-0001.md) — Sincronización Biblioteca
+- [CORE-PM-ENV-0001](./CORE-PM-ENV-0001.md) — Variables de Entorno

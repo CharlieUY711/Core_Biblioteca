@@ -1,3 +1,4 @@
+@"
 import { createBrowserClient } from '@supabase/ssr'
 
 export function createClient() {
@@ -6,5 +7,4 @@ export function createClient() {
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
   )
 }
-
-export const supabase = createClient()
+"@ | Set-Content C:\CORE\Biblioteca\lib\supabaseClient.ts

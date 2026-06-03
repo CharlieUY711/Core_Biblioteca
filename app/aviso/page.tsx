@@ -1,5 +1,4 @@
 'use client'
-
 import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabaseClient'
 
@@ -39,7 +38,6 @@ export default function AvisoPage() {
       className="min-h-screen flex items-center justify-center"
       style={{ backgroundColor: '#0B1E35' }}
     >
-      {/* Grid texture */}
       <div
         className="absolute inset-0 opacity-[0.03] pointer-events-none"
         style={{
@@ -48,9 +46,7 @@ export default function AvisoPage() {
           backgroundSize: '40px 40px',
         }}
       />
-
       <div className="relative w-full max-w-lg px-8 py-12 mx-4">
-        {/* Logo */}
         <div className="mb-10 text-center">
           <span
             className="text-2xl font-bold tracking-[0.25em] text-white"
@@ -60,8 +56,6 @@ export default function AvisoPage() {
           </span>
           <div className="mt-2 h-px bg-gradient-to-r from-transparent via-[#C9A84C] to-transparent" />
         </div>
-
-        {/* Icon */}
         <div className="flex justify-center mb-8">
           <div className="w-12 h-12 rounded-full border border-[#C9A84C]/40 flex items-center justify-center">
             <svg className="w-5 h-5 text-[#C9A84C]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -71,8 +65,6 @@ export default function AvisoPage() {
             </svg>
           </div>
         </div>
-
-        {/* Trilingual warnings */}
         <div className="flex flex-col gap-7 mb-10">
           {warnings.map(({ lang, title, body }) => (
             <div key={lang} className="border-l-2 border-[#1A4F9C] pl-5">
@@ -84,10 +76,7 @@ export default function AvisoPage() {
             </div>
           ))}
         </div>
-
         <div className="h-px bg-[#1A3050] mb-8" />
-
-        {/* Buttons */}
         <div className="flex flex-col gap-3">
           <button
             onClick={handleAccept}
@@ -102,7 +91,6 @@ export default function AvisoPage() {
             Cancelar — Cerrar sesión
           </button>
         </div>
-
         <p className="mt-8 text-center text-[10px] tracking-widest uppercase text-[#2E4060]">
           CORE · Confidencial · 2026
         </p>

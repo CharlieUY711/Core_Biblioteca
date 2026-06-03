@@ -23,7 +23,8 @@ const warnings = [
 export default function AvisoPage() {
   const router = useRouter()
 
-  async function handleAccept() {
+async function handleAccept() {
+    router.refresh()
     router.push('/')
   }
 

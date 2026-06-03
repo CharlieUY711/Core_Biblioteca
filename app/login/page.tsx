@@ -23,10 +23,11 @@ export default function LoginPage() {
       password,
     })
     setLoading(false)
-    if (authError) {
+if (authError) {
       setError('Credenciales incorrectas. Verificá tu email y contraseña.')
       return
     }
+    router.refresh()
     router.push('/aviso')
   }
 

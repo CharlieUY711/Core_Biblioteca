@@ -19,6 +19,6 @@ export async function getCoreStyle(): Promise<CoreStyle | null> {
     if (!res.ok) return null
     return (await res.json()) as CoreStyle
   } catch {
-    return null // si falla, la app usa los defaults de @core/design
+    return null // si falla, la app usa los defaults de @charlieuy711/design
   }
 }

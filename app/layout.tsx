@@ -1,6 +1,10 @@
+import { getCoreStyle } from '@/lib/core-theme'
 import type { Metadata } from 'next'
+import { getCoreStyle } from '@/lib/core-theme'
 import { Inter, JetBrains_Mono } from 'next/font/google'
+import { getCoreStyle } from '@/lib/core-theme'
 import './globals.css'
+import { getCoreStyle } from '@/lib/core-theme'
 import Sidebar from './components/Sidebar'
 
 const inter = Inter({
@@ -18,13 +22,16 @@ export const metadata: Metadata = {
   description: 'Documentación oficial del ecosistema CORE — Blueprint Estratégico 2026–2035',
 }
 
-export default function RootLayout({
+export const dynamic = 'force-dynamic'
+
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  const style = await getCoreStyle()
   return (
-    <html lang="es" className="dark">
+    <html lang="es" className="dark" style={style?.vars as React.CSSProperties | undefined}>
       <body className={`${inter.variable} ${jetbrainsMono.variable} antialiased`}>
         <div className="flex min-h-screen">
           <Sidebar />

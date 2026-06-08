@@ -1,10 +1,7 @@
 import { getCoreStyle } from '@/lib/core-theme'
 import type { Metadata } from 'next'
-import { getCoreStyle } from '@/lib/core-theme'
 import { Inter, JetBrains_Mono } from 'next/font/google'
-import { getCoreStyle } from '@/lib/core-theme'
 import './globals.css'
-import { getCoreStyle } from '@/lib/core-theme'
 import Sidebar from './components/Sidebar'
 
 const inter = Inter({
